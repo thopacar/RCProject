@@ -38,8 +38,5 @@ private Button button;
         Intent intent = new Intent(this, Main2Activity.class);
         startActivity(intent);
     }
-public void test(){
-       //THOMAS IST GAAAAAAAY
-        //Patrick stinkt
-}
+
 }
