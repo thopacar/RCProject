@@ -39,6 +39,6 @@ private Button button;
         startActivity(intent);
     }
 public void test(){
-        int i;
+       //THOMAS IST GAAAAAAAY
 }
 }
