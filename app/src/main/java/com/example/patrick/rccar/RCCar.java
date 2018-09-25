@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -13,29 +14,30 @@ import org.w3c.dom.Text;
 
 public class RCCar extends AppCompatActivity {
 
-private Button button;
+private ImageButton button;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //ToolBar Transparent
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
-        button =(Button) findViewById(R.id.button);
+        button =(ImageButton) findViewById(R.id.imageButtonsetting);
         button.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                openMain2Activity();
+                openSettings();
             }
         });
 
     }
 
 
-    public void openMain2Activity() {
-        Intent intent = new Intent(this, Main2Activity.class);
+    public void openSettings() {
+        Intent intent = new Intent(this, settings.class);
         startActivity(intent);
     }
 
