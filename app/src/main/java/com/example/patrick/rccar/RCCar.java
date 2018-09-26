@@ -23,7 +23,7 @@ private ImageButton button;
         //ToolBar Transparent
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
-        button =(ImageButton) findViewById(R.id.imageButtonsetting);
+        button =(ImageButton) findViewById(R.id.imageButtonSetting);
         button.setOnClickListener(new View.OnClickListener()
         {
             @Override
