@@ -10,7 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-//Quelle: https://www.youtube.com/watch?v=ZZkanr8tS6w 25.09.2018 15:14 Uhr
+//Quelle: https://www.youtube.com/watch?v=ZZkanr8tS6w 25.09.2018 15:14 Uhr s
 public class Splashscreen extends Activity {
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
