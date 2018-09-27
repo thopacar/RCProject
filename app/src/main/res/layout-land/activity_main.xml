@@ -48,12 +48,15 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <TextView
+                    <Button
+                        android:background="@null"
+                        android:id="@+id/livebutton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Live"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        />
 
                 </LinearLayout>
 
@@ -64,7 +67,9 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <TextView
+                    <Button
+                        android:background="@null"
+                        android:id="@+id/recbutton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Recording"

@@ -15,6 +15,8 @@ import org.w3c.dom.Text;
 public class RCCar extends AppCompatActivity {
 
 private ImageButton button;
+private Button live;
+private Button rec;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -33,12 +35,46 @@ private ImageButton button;
             }
         });
 
+        live =(Button) findViewById(R.id.livebutton);
+        live.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                openLive();
+            }
+        });
+
+        rec =(Button) findViewById(R.id.recbutton);
+        rec.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                openRec();
+            }
+        });
     }
 
 
     public void openSettings() {
         Intent intent = new Intent(this, settings.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in3, R.anim.fade_out);
+
+    }
+
+    public void openLive() {
+        Intent intent = new Intent(this, live.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.fade_in3, R.anim.fade_out);
+
+    }
+    public void openRec() {
+        Intent intent = new Intent(this, recording.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.fade_in3, R.anim.fade_out);
+
     }
 
 }

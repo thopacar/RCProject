@@ -28,21 +28,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
-
             android:name=".Main2Activity"
-            android:screenOrientation="sensorLandscape">
-
-        </activity>
-
+            android:screenOrientation="sensorLandscape" />
         <activity
-
             android:name=".settings"
-            android:screenOrientation="sensorLandscape">
-
-        </activity>
-
+            android:screenOrientation="sensorLandscape" />
+        <activity android:name=".live" />
+        <activity android:name=".recording"></activity>
     </application>
 
 </manifest>

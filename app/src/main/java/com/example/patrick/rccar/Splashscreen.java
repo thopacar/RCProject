@@ -60,7 +60,9 @@ public class Splashscreen extends Activity {
                             RCCar.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.fade_in2, R.anim.fade_out);
                     Splashscreen.this.finish();
+
                 } catch (InterruptedException e) {
                     // do nothing
                 } finally {
