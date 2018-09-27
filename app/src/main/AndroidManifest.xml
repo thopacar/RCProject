@@ -34,8 +34,12 @@
         <activity
             android:name=".settings"
             android:screenOrientation="sensorLandscape" />
-        <activity android:name=".live" />
-        <activity android:name=".recording"></activity>
+        <activity
+            android:name=".live"
+            android:screenOrientation="sensorLandscape" />
+        <activity
+            android:name=".recording"
+            android:screenOrientation="sensorLandscape" />
     </application>
 
 </manifest>
