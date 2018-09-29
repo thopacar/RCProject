@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">RC Project</string>
+    <string name="Geräte"><u>Gefundene Geräte</u></string>
 
 </resources>
