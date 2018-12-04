@@ -60,6 +60,7 @@ private Button rec;
     public void openSettings() {
         Intent intent = new Intent(this, settings.class);
         startActivity(intent);
+
         overridePendingTransition(R.anim.fade_in3, R.anim.fade_out);
 
     }

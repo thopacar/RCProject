@@ -14,9 +14,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+
 
 
 public class bluetooth extends AppCompatActivity implements AdapterView.OnItemClickListener{
@@ -28,7 +30,7 @@ public class bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
     public ArrayList<BluetoothDevice> mBTDevices = new ArrayList<>();
 
     public DeviceListAdapter mDeviceListAdapter;
-
+    private ImageButton back;
     ListView lvNewDevices;
 
 
@@ -164,9 +166,19 @@ public class bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bluetooth);
 
+        back =(ImageButton) findViewById(R.id.imageButtonBack);
+        back.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                goBack();
+            }
+        });
 
         Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
         btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
+
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
         mBTDevices = new ArrayList<>();
 
@@ -290,5 +302,12 @@ public class bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
             Log.d(TAG, "Trying to pair with " + deviceName);
             mBTDevices.get(i).createBond();
         }
+    }
+    public void goBack() {
+        //Intent intent = new Intent(this, settings.class);
+       // startActivity(intent);
+        onBackPressed();
+        overridePendingTransition(R.anim.fade_in3, R.anim.fade_out);
+
     }
 }

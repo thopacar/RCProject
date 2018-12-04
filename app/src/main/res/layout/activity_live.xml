@@ -12,4 +12,53 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="live" />
+
+    <TextView
+        android:id="@+id/yText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/seekBarTextview"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:textColor="#ff0000"
+        android:text="Y" />
+
+    <SeekBar
+        android:id="@+id/seekBar1"
+        android:layout_width="207dp"
+        android:layout_height="wrap_content"
+        android:thumb="@drawable/seekbarbutton"
+
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:max="100"
+        android:min="0"
+        android:progress="0"
+        android:progressBackgroundTint="#00000000"
+        android:progressTint="#00000000"
+        android:rotation="-90"
+         />
+
+    <TextView
+        android:id="@+id/seekBarTextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="80dp"
+        android:layout_marginTop="19dp"
+        android:textColor="#ff0000"
+        android:textSize="20dp" />
+
+    <ImageButton
+        android:id="@+id/bremse"
+        android:layout_width="94dp"
+        android:layout_height="94dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="39dp"
+        android:layout_marginStart="35dp"
+        android:background="@null"
+        app:srcCompat="@drawable/custom_button" />
+
 </RelativeLayout>

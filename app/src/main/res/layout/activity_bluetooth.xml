@@ -37,27 +37,38 @@
         android:onClick="btnDiscover"
         android:text="Suche" />
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
-    <ListView
-        android:id="@+id/lvNewDevices"
-        android:layout_width="467dp"
-        android:layout_height="192dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="26dp"
-        android:divider="#9c9c9c"
-        android:dividerHeight="2dp" />
+        <ListView
+            android:id="@+id/lvNewDevices"
+            android:layout_width="467dp"
+            android:layout_height="192dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="26dp"
+            android:divider="#9c9c9c"
+            android:dividerHeight="2dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/lvNewDevices"
-        android:layout_alignStart="@+id/lvNewDevices"
-        android:text="@string/Geräte"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/lvNewDevices"
+            android:layout_alignStart="@+id/lvNewDevices"
+            android:text="@string/Geräte" />
 
-</RelativeLayout>
+        <ImageButton
+            android:id="@+id/imageButtonBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="12dp"
+            android:background="@null"
+            android:src="@drawable/ic_arrow_back_black_24dp" />
+    </RelativeLayout>
 </RelativeLayout>
