@@ -55,6 +55,7 @@
                         android:layout_height="wrap_content"
                         android:text="Live"
                         android:textSize="20sp"
+                        android:textColor="@drawable/custom_button_mainmenu"
                         android:textStyle="bold"
                         />
 
@@ -74,6 +75,7 @@
                         android:layout_height="wrap_content"
                         android:text="Recording"
                         android:textSize="20sp"
+                       android:textColor="@drawable/custom_button_mainmenu"
                         android:textStyle="bold" />
 
 
@@ -92,6 +94,13 @@
         android:layout_gravity="top|center_vertical"
         android:layout_marginTop="60dp"
         android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/info"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@null"
+            android:src="@drawable/ic_settings_black_48dp" />
 
         <LinearLayout
             android:layout_width="match_parent"

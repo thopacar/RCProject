@@ -9,13 +9,17 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -32,8 +36,7 @@ public class bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
     public DeviceListAdapter mDeviceListAdapter;
     private ImageButton back;
     ListView lvNewDevices;
-
-
+    Switch btnONOFF;
     // Create a BroadcastReceiver for ACTION_FOUND
     private final BroadcastReceiver mBroadcastReceiver1 = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
@@ -150,16 +153,7 @@ public class bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
 
 
 
-    @Override
-    protected void onDestroy() {
-        Log.d(TAG, "onDestroy: called.");
-        super.onDestroy();
-        unregisterReceiver(mBroadcastReceiver1);
-        unregisterReceiver(mBroadcastReceiver2);
-        unregisterReceiver(mBroadcastReceiver3);
-        unregisterReceiver(mBroadcastReceiver4);
-        //mBluetoothAdapter.cancelDiscovery();
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,7 +170,7 @@ public class bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
             }
         });
 
-        Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
+        btnONOFF = (Switch) findViewById(R.id.btnONOFF);
         btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
 
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
@@ -184,9 +178,17 @@ public class bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
 
         //Broadcasts when bond state changes (ie:pairing)
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
-        registerReceiver(mBroadcastReceiver4, filter);
+        LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver4, filter);
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
+        if(mBluetoothAdapter.isEnabled()){
+            btnONOFF.setChecked(true);
+        }
+        else{
+            btnONOFF.setChecked(false);
+        }
+
 
         lvNewDevices.setOnItemClickListener(bluetooth.this);
 
@@ -202,25 +204,28 @@ public class bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
     }
 
 
-
     public void enableDisableBT(){
         if(mBluetoothAdapter == null){
             Log.d(TAG, "enableDisableBT: Does not have BT capabilities.");
         }
+
         if(!mBluetoothAdapter.isEnabled()){
             Log.d(TAG, "enableDisableBT: enabling BT.");
-            Intent enableBTIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivity(enableBTIntent);
+            //Intent enableBTIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            //startActivity(enableBTIntent);
+            mBluetoothAdapter.enable();
 
             IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-            registerReceiver(mBroadcastReceiver1, BTIntent);
+            LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver1, BTIntent);
+            Toast.makeText(this, "Bluetooth Aktiviert", Toast.LENGTH_SHORT).show();
         }
         if(mBluetoothAdapter.isEnabled()){
             Log.d(TAG, "enableDisableBT: disabling BT.");
             mBluetoothAdapter.disable();
 
             IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-            registerReceiver(mBroadcastReceiver1, BTIntent);
+            LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver1, BTIntent);
+            Toast.makeText(this, "Bluetooth Deaktiviert", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -234,12 +239,14 @@ public class bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
         startActivity(discoverableIntent);
 
         IntentFilter intentFilter = new IntentFilter(mBluetoothAdapter.ACTION_SCAN_MODE_CHANGED);
-        registerReceiver(mBroadcastReceiver2,intentFilter);
+        LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver2,intentFilter);
+        Toast.makeText(this, "Gerät sichtbar für 5 Minuten", Toast.LENGTH_SHORT).show();
 
     }
 
     public void btnDiscover(View view) {
         Log.d(TAG, "btnDiscover: Looking for unpaired devices.");
+        Toast.makeText(this, "Suche gestartet", Toast.LENGTH_SHORT).show();
 
         if(mBluetoothAdapter.isDiscovering()){
             mBluetoothAdapter.cancelDiscovery();
@@ -262,6 +269,23 @@ public class bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
             IntentFilter discoverDevicesIntent = new IntentFilter(BluetoothDevice.ACTION_FOUND);
             registerReceiver(mBroadcastReceiver3, discoverDevicesIntent);
         }
+    }
+//Problembehandlung 07.12.2018  App Crashed nachdem Bluetoothsettings Activity geschlossen wird.
+//Caused by : java. lang. IllegalAigumentException: Receiver not registered: com. example . patrick . rccar . bluetoothSl@fcdba85
+//Lösung:  LocalBroadcastManager in jeweiliger Funktion implementieren um einen Receiver zu registrieren und in onDestroy() implementieren um einen Receiver wieder zu löschen
+//https://developer.android.com/reference/android/support/v4/content/LocalBroadcastManager
+
+    @Override
+    protected void onDestroy() {
+        Log.d(TAG, "onDestroy: Aufruf.");
+
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver1);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver2);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver3);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver4);
+       // mBluetoothAdapter.cancelDiscovery();
+
+        super.onDestroy();
     }
 
     /**
@@ -290,6 +314,7 @@ public class bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
         mBluetoothAdapter.cancelDiscovery();
 
         Log.d(TAG, "onItemClick: You Clicked on a device.");
+        Toast.makeText(this, "Versuche zu paaren", Toast.LENGTH_SHORT).show();
         String deviceName = mBTDevices.get(i).getName();
         String deviceAddress = mBTDevices.get(i).getAddress();
 
@@ -301,13 +326,13 @@ public class bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
         if(Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2){
             Log.d(TAG, "Trying to pair with " + deviceName);
             mBTDevices.get(i).createBond();
+
         }
     }
     public void goBack() {
-        //Intent intent = new Intent(this, settings.class);
-       // startActivity(intent);
         onBackPressed();
         overridePendingTransition(R.anim.fade_in3, R.anim.fade_out);
+        finish();
 
     }
 }

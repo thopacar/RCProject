@@ -8,14 +8,17 @@
     android:layout_height="wrap_content"
     tools:context=".bluetooth">
 
-    <Button
+    <Switch
         android:id="@+id/btnONOFF"
-        android:layout_width="wrap_content"
+        android:layout_width="112dp"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnDiscoverable_on_off"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/btnDiscoverable_on_off"
-        android:layout_marginEnd="89dp"
-        android:text="AN/AUS" />
+        android:layout_marginEnd="85dp"
+        android:text="AUS / AN"
+        android:textColor="@drawable/custom_button_mainmenu"/>
+
+
 
     <Button
         android:id="@+id/btnDiscoverable_on_off"
@@ -24,7 +27,9 @@
         android:layout_alignTop="@+id/btnFindUnpairedDevices"
         android:layout_centerHorizontal="true"
         android:onClick="btnEnableDisable_Discoverable"
-        android:text="Aktiviere Sichtbarkeit" />
+        android:text="Sichtbarkeit Aktivieren"
+        android:textColor="@drawable/custom_button_mainmenu"/>
+
 
     <Button
         android:id="@+id/btnFindUnpairedDevices"
@@ -35,7 +40,8 @@
         android:layout_marginStart="53dp"
         android:layout_marginTop="35dp"
         android:onClick="btnDiscover"
-        android:text="Suche" />
+        android:text="Suche"
+        android:textColor="@drawable/custom_button_mainmenu"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

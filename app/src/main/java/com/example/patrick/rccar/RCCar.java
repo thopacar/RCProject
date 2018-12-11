@@ -17,6 +17,8 @@ public class RCCar extends AppCompatActivity {
 private ImageButton button;
 private Button live;
 private Button rec;
+private ImageButton btn_info;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -52,6 +54,17 @@ private Button rec;
             public void onClick(View v)
             {
                 openRec();
+            }
+        });
+
+        btn_info = (ImageButton) findViewById(R.id.info);
+        btn_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), InfoActivity.class);
+                startActivity(i);
+
+                overridePendingTransition(R.anim.fade_in3, R.anim.fade_out);
             }
         });
     }
