@@ -37,6 +37,7 @@ public class bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
     private ImageButton back;
     ListView lvNewDevices;
     Switch btnONOFF;
+    Button btn_paired;
     // Create a BroadcastReceiver for ACTION_FOUND
     private final BroadcastReceiver mBroadcastReceiver1 = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
@@ -175,6 +176,14 @@ public class bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
 
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
         mBTDevices = new ArrayList<>();
+
+        btn_paired = (Button) findViewById(R.id.btn_paired);
+        btn_paired.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openPaired();
+                }
+        });
 
         //Broadcasts when bond state changes (ie:pairing)
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
@@ -333,6 +342,14 @@ public class bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
         onBackPressed();
         overridePendingTransition(R.anim.fade_in3, R.anim.fade_out);
         finish();
+
+    }
+
+    public void openPaired() {
+        Intent intent = new Intent(this, Paired.class);
+        startActivity(intent);
+
+        overridePendingTransition(R.anim.fade_in3, R.anim.fade_out);
 
     }
 }

@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.patrick.rccar.Main2Activity"
+    tools:context="com.example.patrick.rccar.RCCar"
     android:background="@color/graylight"
     android:orientation="vertical">
 
@@ -90,43 +90,38 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="top|center_vertical"
-        android:layout_marginTop="60dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="40dp"
         android:orientation="vertical">
 
         <ImageButton
             android:id="@+id/info"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginLeft="10dp"
             android:background="@null"
-            android:src="@drawable/ic_settings_black_48dp" />
+            android:src="@drawable/custom_button_info" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="25dp"
-            android:gravity="right"
-            android:layout_marginRight="20dp">
+        <ImageButton
+            android:id="@+id/imageButtonSetting"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="20dp"
+            android:background="@null"
+            android:src="@drawable/custom_button_setting" />
 
-            <ImageButton
-                android:id="@+id/imageButtonSetting"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@null"
-                android:src="@drawable/ic_settings_black_48dp" />
+        <Button
+            android:id="@+id/connect"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:text="Connect"
+            android:textColor="@drawable/custom_button_mainmenu" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingLeft="10dp"
-                android:paddingRight="20dp"
-                android:textSize="18sp"
-                android:text="Einstellungen"
-                android:textAlignment="gravity" />
-        </LinearLayout>
 
 
     </RelativeLayout>

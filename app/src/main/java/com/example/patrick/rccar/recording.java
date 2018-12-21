@@ -1,8 +1,12 @@
 package com.example.patrick.rccar;
 
+import android.bluetooth.BluetoothSocket;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 //Accelormeter https://www.youtube.com/watch?v=YrI2pCZC8cc
@@ -12,13 +16,16 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.OutputStream;
+
 
 public class recording extends AppCompatActivity implements SensorEventListener{
 
     private TextView yText;
     private Sensor mySensor;
     private SensorManager SM;
-
+    private ImageButton btn_bremse;
     public SeekBar sb1;
     public TextView tvsb1;
     // ------- SEEKBAR -------
@@ -26,11 +33,42 @@ public class recording extends AppCompatActivity implements SensorEventListener{
     int sbmax = 100;
     int sbstart = 0;
     // -----------------------
+
+    BluetoothSocket mmSocket = null;
+    OutputStream mmOutputStream;
+    bluetoothconnection bt = bluetoothconnection.getInstance(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recording);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        final class WorkerThread implements Runnable{
+
+            private String btMsg;
+            public WorkerThread(String msg)
+
+            {
+                btMsg = msg;
+            }
+
+            public void run(){
+                try {
+                    sendBtMsg(btMsg);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        btn_bremse = (ImageButton)findViewById(R.id.bremse);
+        btn_bremse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                (new Thread(new WorkerThread("bremse"))).start();
+            }
+
+        });
+
 // ----------------- ACCELORMETER ------------------------
         // Create our Sensor Manager
         SM = (SensorManager)getSystemService(SENSOR_SERVICE);
@@ -85,6 +123,28 @@ public class recording extends AppCompatActivity implements SensorEventListener{
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
         // wird nicht verwendet
+    }
+
+    public void sendBtMsg(String msg2send) throws IOException {
+
+
+        mmSocket = bt.mmSocket;
+
+       if(mmSocket == null)
+      {
+          runOnUiThread(new Runnable() {
+              public void run() {
+                  Toast.makeText(getApplicationContext(), "Nicht Verbunden", Toast.LENGTH_SHORT).show();
+              }
+          });
+
+      }
+      else {
+           String msg = msg2send;
+
+           mmOutputStream = mmSocket.getOutputStream();
+           mmOutputStream.write(msg.getBytes());
+       }
     }
 }
 

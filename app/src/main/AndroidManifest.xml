@@ -47,10 +47,13 @@
         <activity
             android:name=".bluetooth"
             android:screenOrientation="sensorLandscape" />
-        <activity android:name=".InfoActivity"
-
-            android:theme="@style/AppTheme.Info"
-            />
+        <activity
+            android:name=".InfoActivity"
+            android:theme="@style/AppTheme.Info" />
+        <activity
+            android:name=".Paired"
+            android:screenOrientation="sensorLandscape" />
+        <activity android:name=".bluetoothconnection"/>
     </application>
 
 </manifest>
