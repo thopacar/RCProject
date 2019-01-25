@@ -42,7 +42,7 @@
             android:name=".live"
             android:screenOrientation="sensorLandscape" />
         <activity
-            android:name=".recording"
+            android:name=".Recording"
             android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".bluetooth"

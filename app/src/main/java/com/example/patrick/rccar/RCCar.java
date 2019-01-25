@@ -1,22 +1,16 @@
 package com.example.patrick.rccar;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
+
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Set;
-import java.util.UUID;
 
 public class RCCar extends AppCompatActivity {
 
@@ -138,7 +132,7 @@ private Button btn_connect;
 
     }
     public void openRec() {
-        Intent intent = new Intent(this, recording.class);
+        Intent intent = new Intent(this, Recording.class);
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in3, R.anim.fade_out);
 
