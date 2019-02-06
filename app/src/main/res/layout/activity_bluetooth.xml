@@ -14,29 +14,34 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/btnDiscoverable_on_off"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="85dp"
+        android:layout_marginEnd="35dp"
+        android:fontFamily="@font/gothic_kursiv"
         android:text="AUS / AN"
-        android:textColor="@drawable/custom_button_mainmenu"/>
-
+        android:textColor="@drawable/custom_button_mainmenu" />
 
 
     <Button
         android:id="@+id/btnDiscoverable_on_off"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/btnFindUnpairedDevices"
-        android:layout_centerHorizontal="true"
+        android:layout_marginStart="152dp"
+        android:background="@null"
+        android:fontFamily="@font/gothic_kursiv"
         android:onClick="btnEnableDisable_Discoverable"
         android:text="Sichtbarkeit Aktivieren"
-        android:textColor="@drawable/custom_button_mainmenu"/>
+        android:textColor="@drawable/custom_button_mainmenu" />
 
     <Button
         android:id="@+id/btn_paired"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="91dp"
+        android:layout_alignBaseline="@+id/btnONOFF"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="167dp"
+        android:background="@null"
+        android:fontFamily="@font/gothic_kursiv"
         android:text="Gekoppelte Geräte"
         android:textColor="@drawable/custom_button_mainmenu" />
 
@@ -49,6 +54,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="53dp"
         android:layout_marginTop="35dp"
+        android:background="@null"
+        android:fontFamily="@font/gothic_kursiv"
         android:onClick="btnDiscover"
         android:text="Suche"
         android:textColor="@drawable/custom_button_mainmenu"/>
@@ -74,6 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/lvNewDevices"
             android:layout_alignStart="@+id/lvNewDevices"
+            android:fontFamily="@font/gothic_kursiv"
             android:text="@string/Geräte" />
 
         <ImageButton

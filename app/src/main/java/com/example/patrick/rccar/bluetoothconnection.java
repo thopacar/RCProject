@@ -39,7 +39,7 @@ public class bluetoothconnection extends AppCompatActivity {
             {
                 for (BluetoothDevice device : pairedDevices)
                 {
-                    if /*(device.getName().equals("PiBluetooth"))*/ ( device.getName().equals("raspberrypi"))
+                    if /*(device.getName().equals("PiBluetooth"))*/ ( device.getName().equals("PiBluetooth"))
                         {
                         Log.e("RCProject", device.getName());
                         mmDevice = device;

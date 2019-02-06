@@ -91,7 +91,7 @@ private Button btn_connect;
         btn_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                (new Thread(new WorkerThread("starteskript"))).start();
+                //(new Thread(new WorkerThread("starteskript"))).start();
                 Intent i = new Intent(getApplicationContext(), InfoActivity.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.fade_in3, R.anim.fade_out);

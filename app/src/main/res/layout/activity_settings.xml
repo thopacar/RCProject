@@ -4,48 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".settings">
+    tools:context=".settings"
+    android:background="#FFFFFF">
 
-    <android.support.v7.widget.CardView
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#f1f1f1">
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:text="Einstellungen"
-        android:textSize="18sp"
-        android:textColor="#000000"/>
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13dp"
+            android:fontFamily="@font/gothic_kursiv"
+            android:gravity="center"
+            android:text="Einstellungen"
+            android:textColor="#000000"
+            android:textSize="22sp" />
+    </RelativeLayout>
 
-    </android.support.v7.widget.CardView>
 
 
     <Button
         android:id="@+id/buttonbluetooth"
-        android:layout_width="132dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="92dp"
-        android:background="@null"
-        android:text="Bluetooth" />
-
-
-
-    <ImageView
-        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/buttonbluetooth"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="105dp"
-        app:srcCompat="@drawable/ic_settings_bluetooth_black_24dp" />
+        android:layout_above="@+id/USONOFF"
+        android:layout_alignStart="@+id/USONOFF"
+        android:background="@null"
+        android:drawableRight="@drawable/ic_settings_bluetooth_black_24dp"
+        android:drawablePadding="10sp"
+        android:fontFamily="@font/gothic_kursiv"
+        android:text="Bluetooth"
+        android:textSize="18dp"
+        android:textColor="@drawable/custom_button_mainmenu"/>
+
+
+    <ToggleButton
+        android:id="@+id/USONOFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@null"
+        android:drawableRight="@drawable/custom_button_ultraschallsensor"
+        android:drawablePadding="100sp"
+        android:textSize="18dp"
+        android:textColor="@drawable/custom_button_mainmenu"
+        android:fontFamily="@font/gothic_kursiv"
+        android:textOn="Ultraschallsensoren"
+        android:textOff="Ultraschallsensoren"/>
+
+    <ToggleButton
+        android:id="@+id/LIGHTONOFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/USONOFF"
+        android:layout_centerHorizontal="true"
+        android:background="@null"
+        android:drawablePadding="260sp"
+        android:drawableRight="@drawable/custom_button_ultraschallsensor"
+        android:fontFamily="@font/gothic_kursiv"
+        android:textColor="@drawable/custom_button_mainmenu"
+        android:textOff="Licht"
+        android:textOn="Licht"
+        android:textSize="18dp" />
 
 </RelativeLayout>
